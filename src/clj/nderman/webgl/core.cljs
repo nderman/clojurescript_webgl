@@ -1,9 +1,8 @@
-(ns nderman.webgl.core)
+(ns nderman.webgl.core
+  (:require [thi.ng.geom.gl.core :as gl]))
 (enable-console-print!)
 
-(defn hello [] "hello There")
+(defonce gl-ctx (gl/gl-context "main"))
 
-;; uncomment this to alter the provided "app" DOM element
-;; (set! (.-innerHTML (js/document.getElementById "app")) (hello))
-
-(println (hello))
+(doto gl-ctx
+  (gl/clear-color-and-depth-buffer 0 0 0 1 1))
